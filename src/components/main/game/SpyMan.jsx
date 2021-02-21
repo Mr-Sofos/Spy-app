@@ -1,21 +1,24 @@
 import React from 'react';
 import style from './style.module.css';
 import DistributionOfRoles from './DistributionOfRoles';
-import Spy from '../../../images/spy.png';
+import image from '../../../images/spy.png';
 
-function Spy (props) {
+function SpyMan(props) {
   return (
-    <div className={style.spy}>
-      <DistributionOfRoles/>
+    <div className={style.spyMan}>
+      <DistributionOfRoles />
       <div className={style.spyImg}>
-        <img src={Spy} alt='imgSpy'/>
+        <img src={image} alt="imgSpy" />
       </div>
       <div className={style.spyText}>
         <h1>ТЫ ШПИОН!</h1>
-        <p>Твоя задача - отгадать слово, которое<br/> узнали другие участники игры</p>
+        <p>
+          Твоя задача - отгадать слово, которое
+          <br /> узнали другие участники игры
+        </p>
       </div>
     </div>
   );
 }
 
-export default Spy;
+export default SpyMan;
