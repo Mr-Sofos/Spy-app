@@ -16,9 +16,9 @@ function Main() {
           <Settings />
         </Route>
         <Route path="/game">
-          <Game />
         </Route>
         <Route path="/timer">
+          {/* {<props.component />} */}
           <Timer />
         </Route>
         <Route path="/categories">
