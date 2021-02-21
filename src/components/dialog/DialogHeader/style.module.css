@@ -9,4 +9,8 @@
   padding: 5px;
   font-weight: 300;
   box-sizing: border-box;
+  cursor: pointer;
+}
+.button:hover {
+  color: red;
 }
