@@ -1,0 +1,38 @@
+.dialog {
+  position: absolute; /* фиксированное положение */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* цвет фона */
+  z-index: 1050;
+  display: none; /* по умолчанию модальное окно прозрачно */
+  -webkit-transition: 200ms ease-in;
+  -moz-transition: 200ms ease-in;
+  transition: 200ms ease-in; /* анимация перехода */
+  pointer-events: auto; /* элемент невидим для событий мыши */
+  margin: 0;
+  padding: 0;
+}
+.active {
+  display: block;
+}
+.dialog:target {
+  display: block; /* делаем окно видимым */
+  pointer-events: auto; /* элемент видим для событий мыши */
+  overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+
+.dialog-content {
+  width: 344px;
+  height: 389px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2000;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}

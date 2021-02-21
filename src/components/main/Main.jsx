@@ -7,6 +7,7 @@ import Words from '../main/words/Words';
 import { Route, Switch } from 'react-router-dom';
 
 import style from '../main/style.module.css';
+import SpyMan from './game/SpyMan';
 
 function Main() {
   return (
@@ -16,9 +17,12 @@ function Main() {
           <Settings />
         </Route>
         <Route path="/game">
-          <Game />
+        </Route>
+        <Route path="/spy">
+          <SpyMan />
         </Route>
         <Route path="/timer">
+          {/* {<props.component />} */}
           <Timer />
         </Route>
         <Route path="/categories">

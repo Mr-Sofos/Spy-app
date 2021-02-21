@@ -1,9 +1,14 @@
 import React from 'react';
-
-import style from './style.module.css';
+import Spy from '../../../images/spy.png';
+import style from './style.module.css'
 
 function Logo() {
-  return <div></div>;
+  return (
+    <div className={style.logo}>
+      <img src={Spy} alt='#' />
+      <span>ШПИОН</span>
+    </div>
+  );
 }
 
 export default Logo;
