@@ -18,6 +18,7 @@ function Dialog(props) {
 Dialog.propTypes = {
   children: PropTypes.node.isRequired,
   open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Dialog;

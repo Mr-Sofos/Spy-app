@@ -11,7 +11,7 @@ function DialogHeader(props) {
 
   return <div className={style.header}>
     {props.children}
-    <div className={style.button} onClick={props.context}>
+    <div className={style.button} onClick={context}>
       <i className="fa fa-times" aria-hidden="true"></i>
     </div>
   </div>;
