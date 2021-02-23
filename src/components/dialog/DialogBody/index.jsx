@@ -8,7 +8,7 @@ function DialogBody(props) {
 }
 
 DialogBody.propTypes = {
-  childre: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default DialogBody;
