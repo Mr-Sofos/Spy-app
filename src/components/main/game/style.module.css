@@ -1,15 +1,9 @@
 .games {
-    color: darkslateblue;
+  color: darkslateblue;
 }
 
+.spyImg,
+.spyText,
 .playerOne {
-    text-align: center;
-}
-
-.roles {
-    padding: 1.2em;
-}
-
-.spyImg, .spyText {
-    text-align: center;
+  text-align: center;
 }

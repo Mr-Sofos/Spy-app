@@ -7,13 +7,13 @@ import style from '../ListItem/style.module.css';
 function ListItem(props) {
   return (
     <li className={style.list} onClick={props.onClick}>
-        <div>
-          <div className={style.title}>{props.title}</div>
-          <div className={style.subtitle}>{props.subtitle}</div>
-        </div>
-        <div className={style.icon}>
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
-        </div>
+      <div>
+        <div className={style.title}>{props.title}</div>
+        <div className={style.subtitle}>{props.subtitle}</div>
+      </div>
+      <div className={style.icon}>
+        <i className="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
     </li>
   );
 }

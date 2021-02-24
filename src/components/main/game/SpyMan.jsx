@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './style.module.css';
-import DistributionOfRoles from './DistributionOfRoles';
 import image from '../../../images/spy.png';
+import PageTitle from '../../pagetitle/PageTitle';
 
 function SpyMan(props) {
   return (
     <div className={style.spyMan}>
-      <DistributionOfRoles />
+      <PageTitle>Раздача ролей</PageTitle>
       <div className={style.spyImg}>
         <img src={image} alt="imgSpy" />
       </div>

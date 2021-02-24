@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './style.module.css';
-import DistributionOfRoles from './DistributionOfRoles';
+import PageTitle from '../../pagetitle/PageTitle';
 
 function Game() {
   return (
     <div className={style.games}>
-      <DistributionOfRoles/>
+      <PageTitle>Раздача ролей</PageTitle>
       <div className={style.playerOne}>
         <h1>ИГРОК 1</h1>
         <p>

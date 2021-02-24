@@ -1,9 +1,9 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .block-helps {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }

@@ -1,8 +1,9 @@
 .title {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 20px;
   line-height: 26px;
   color: rgba(0, 0, 0, 0.87);
+  margin: 1.5em 0;
 }

@@ -5,7 +5,7 @@ import style from './style.module.css';
 function Book() {
   return (
     <div className={style.book}>
-      <img src={bookImg} alt='#' />
+      <img src={bookImg} alt="#" />
     </div>
   );
 }
