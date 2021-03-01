@@ -4,17 +4,30 @@ import ListItem from '../../ListItem';
 import Button from '../../Button';
 import PlayersCount from '../../PlayersCount';
 import PageTitle from '../../Pagetitle';
+import SpiesCount from '../../SpiesCount';
 
 function Settings() {
-  const [dialog, setDialog] = useState(false);
+  const [playerDialog, setPlayerDialog] = useState(false);
 
   const openDialogTotalPlayers = () => {
-    return setDialog(true);
+    return setPlayerDialog(true);
   };
 
-  const closeDialog = () => {
-    return setDialog(false);
+  const closeDialogTotalPlayers = () => {
+    return setPlayerDialog(false);
   };
+
+  const [spiesDialog, setSpiesDialog] = useState(false);
+
+  const openDialogTotalSpies = () => {
+    return setSpiesDialog(true);
+  }
+
+  const closeDialogTotalSpies = () => {
+    return setSpiesDialog(false);
+  }
+
+
 
   return (
     <div>
@@ -28,7 +41,7 @@ function Settings() {
         <ListItem
           title="Количество шпионов"
           subtitle="Выбрано: 1 шпион"
-          onClick={() => {}}
+          onClick={openDialogTotalSpies}
         />
         <ListItem
           title="Категории слов"
@@ -48,7 +61,8 @@ function Settings() {
           НАЧАТЬ ИГРУ
         </Button>
       </List>
-      <PlayersCount open={dialog} onClose={closeDialog} />
+      <PlayersCount open={playerDialog} onClose={closeDialogTotalPlayers} />
+      <SpiesCount open={spiesDialog} onClose={closeDialogTotalSpies} />
     </div>
   );
 }
