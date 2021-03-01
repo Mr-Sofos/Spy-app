@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from 'react-redux';
-import store from './redux';
+import store from './Redux';
 
 ReactDOM.render(
   <React.StrictMode>
