@@ -1,9 +1,9 @@
 import React from 'react';
-import DialogHeader from './Dialog/DialogHeader';
-import DialogBody from './Dialog/DialogBody';
-import Dialog from './Dialog';
+import DialogHeader from '../../Dialog/DialogHeader';
+import DialogBody from '../../Dialog/DialogBody';
+import Dialog from '../../Dialog';
 
-function SpiesCount (props) {
+function SpiesCount(props) {
   return (
     <Dialog open={props.open} onClose={props.onClose}>
       <DialogHeader>Количество шпионов</DialogHeader>

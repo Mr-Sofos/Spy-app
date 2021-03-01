@@ -1,5 +1,5 @@
 import React from 'react';
-import Spy from '../../../Images/spy.png';
+import Spy from '../../../Assets/spy.png';
 import style from './style.module.css';
 
 function Index() {

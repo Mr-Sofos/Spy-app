@@ -1,7 +1,7 @@
 import React from 'react';
-import DialogHeader from './Dialog/DialogHeader';
-import DialogBody from './Dialog/DialogBody';
-import Dialog from './Dialog';
+import DialogHeader from '../../Dialog/DialogHeader';
+import DialogBody from '../../Dialog/DialogBody';
+import Dialog from '../../Dialog';
 
 function PlayersCount(props) {
   return (

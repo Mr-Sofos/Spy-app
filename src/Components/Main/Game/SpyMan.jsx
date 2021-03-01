@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './style.module.css';
-import image from '../../../Images/spy.png';
+import image from '../../../Assets/spy.png';
 import PageTitle from '../../Pagetitle';
 
 function SpyMan(props) {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import helpImg from '../../../Images/help.svg';
+import helpImg from '../../../Assets/help.svg';
 import style from './style.module.css';
 import DialogHeader from '../../Dialog/DialogHeader';
 import DialogTitle from '../../Dialog/DialogTitle';
