@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import List from '../../List';
 import ListItem from '../../ListItem';
 import Button from '../../Button';
-import PlayersCount from '../PlayersCount/PlayersCount';
+import PlayersCount from '../PlayersCount';
 import PageTitle from '../../Pagetitle';
-import SpiesCount from '../SpiesCount/SpiesCount';
+import SpiesCount from '../SpiesCount';
 import Timer from '../Timer';
 import Words from '../Words';
 
