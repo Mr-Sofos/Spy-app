@@ -1,9 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import game from './Reducer/game';
-import categories from './Reducer/categories';
-import words from './Reducer/words';
+import game from './ducks/game';
+import categories from './ducks/categories';
+import words from './ducks/words';
 
 const logger = createLogger({
   diff: true,

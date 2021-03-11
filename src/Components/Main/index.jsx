@@ -27,7 +27,7 @@ function Main() {
         <Route path="/categories">
           <Categories />
         </Route>
-        <Route path="/words">
+        <Route path="/words/:id">
           <Words />
         </Route>
       </Switch>

@@ -1,0 +1,10 @@
+.dialogBody {
+    overflow-y: scroll;
+    height: 13em;
+    width: 15em;
+    margin: auto;
+}
+
+.dialogBody::-webkit-scrollbar {
+    width: 0;
+}
