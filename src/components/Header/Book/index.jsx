@@ -1,5 +1,5 @@
 import React from 'react';
-import bookImg from '../../../Assets/book.svg';
+import bookImg from '../../../assets/book.svg';
 import style from './style.module.css';
 
 function Book() {

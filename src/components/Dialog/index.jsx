@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DialogContext from '../../Context';
+import DialogContext from '../../context';
 import style from './style.module.css';
 
 function Dialog(props) {

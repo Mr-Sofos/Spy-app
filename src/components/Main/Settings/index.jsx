@@ -7,8 +7,9 @@ import PageTitle from '../../Pagetitle';
 import SpiesCount from '../SpiesCount';
 import Timer from '../Timer';
 import Words from '../Words';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pluralize } from 'numeralize-ru';
+import { setStartGame } from '../../../redux/ducks/game';
 
 function Settings() {
   const [playerDialog, setPlayerDialog] = useState(false);
@@ -24,8 +25,29 @@ function Settings() {
       timer: state.game.timer,
       players: state.game.players,
       spies: state.game.spies,
+      selectedCategories: state.game.selectedCategories,
     };
   });
+  //получил массив объектов
+  const selectedCategories = useSelector((state) => state.categories.items);
+  // получил id выбранных слов в категории
+  const idCategory = settings.selectedCategories;
+  // вывел на экран выбранную категорию с помощью Ахьмада
+  const wordsCategory = () => {
+    if (idCategory.length === selectedCategories.length) {
+      return 'все';
+    }
+
+    return selectedCategories
+      .reduce((actuallyWords, item) => {
+        if (idCategory.indexOf(item.id) !== -1) {
+          return [...actuallyWords, item.name];
+        }
+
+        return actuallyWords;
+      }, [])
+      .join(', ');
+  };
 
   const openDialogTotalPlayers = () => {
     setPlayerDialog(true);
@@ -68,6 +90,12 @@ function Settings() {
   const countSpies = pluralize(settings.spies, 'шпион', 'шпиона', 'шпионов');
   const timeCount = pluralize(settings.timer, 'минута', 'минуты', 'минут');
 
+  const dispatch = useDispatch();
+
+  const startGame = () => {
+    dispatch(setStartGame())
+  }
+
   return (
     <div>
       <PageTitle>Настройки партии</PageTitle>
@@ -85,7 +113,7 @@ function Settings() {
           Количество шпионов
         </ListItem>
         <ListItem
-          subtitle="Выбрано: страны"
+          subtitle={`Выбрано: ${wordsCategory()}`}
           onClick={openCategoriesWordsDialog}
         >
           Категории слов
@@ -96,13 +124,7 @@ function Settings() {
         >
           Таймер
         </ListItem>
-        <Button
-          onClick={() => {
-            alert('You are Spy!');
-          }}
-        >
-          НАЧАТЬ ИГРУ
-        </Button>
+        <Button onClick={() => startGame()}>НАЧАТЬ ИГРУ</Button>
       </List>
       <PlayersCount open={playerDialog} onClose={closeDialogTotalPlayers} />
       <SpiesCount open={spiesDialog} onClose={closeDialogTotalSpies} />

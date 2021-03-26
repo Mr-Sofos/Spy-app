@@ -1,7 +1,7 @@
 .dialogBody {
+    font-family: 'Roboto', sans-serif;
     overflow-y: scroll;
-    height: 13em;
-    width: 15em;
+    height: 15em;
     margin: auto;
 }
 
