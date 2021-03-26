@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import DialogContext from '../../../Context';
+import DialogContext from '../../../context';
 import style from '../DialogHeader/style.module.css';
 
 function DialogHeader(props) {
