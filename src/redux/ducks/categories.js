@@ -24,6 +24,10 @@ const initialState = {
       id: 6,
       name: 'Животные'
     },
+    {
+      id: 7,
+      name: 'Природа'
+    }
   ]
 };
 

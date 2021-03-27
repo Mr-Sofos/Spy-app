@@ -3,7 +3,6 @@ const initialState = {
   spies: 1,
   timer: 3,
   selectedCategories: [2, 3],
-
   started: false, //true
   currentWord: null, // театр
   spyOrder: null, // номер шпиона (2)
