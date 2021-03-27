@@ -1,14 +1,18 @@
 const initialState = {
   players: 3,
   spies: 1,
-  timer: 3,
+  timer: 3, //тут должны быть не минуты, а секунды. В компоненте нужно
+            // подправить вывод (timer / 60)
   selectedCategories: [2, 3],
-  started: false, //true
-  currentWord: null, // театр
-  spyOrder: null, // номер шпиона (2)
-  playersShowed: 0,
 
-  timerStarted: false,
+  started: false, // тру когда кликнут начать игру
+  currentWord: null, // текущее слово (выбирается случайно из выбранных катов)
+  spyOrder: null, // номер шпиона (случайное число от 1 до players)
+  playersShowed: 0, // сколько человек уже просмотрели свою роль
+  wrapper: false, // показывать ли обложку или нет
+
+  timerStarted: false, // после того как последний игрок просмотрит свою роль
+                       // значение изменится на true
 };
 
 export default function reducer(state = initialState, action) {
