@@ -7,3 +7,11 @@
 .playerOne {
   text-align: center;
 }
+
+.peacefulText, .peacefulImg {
+  text-align: center;
+}
+
+.peacefulImg img {
+  width: 15em;
+}

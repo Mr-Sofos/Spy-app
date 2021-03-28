@@ -1,8 +1,25 @@
 import React from 'react';
 import style from './style.module.css';
 import PageTitle from '../../Pagetitle';
+import { useSelector } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import SpyMan from './GameComponents/SpyMan';
 
 function Game() {
+  // const wrapper = useSelector(state => state.game.wrapper);
+  //
+  // if(wrapper) {
+  //   return(
+  //     <Switch>
+  //       <Route path="/spy">
+  //         <SpyMan />
+  //       </Route>
+  //       <Redirect to="/game" />
+  //     </Switch>
+  //   )
+  // }
+
+
   /*
   * Этот компонент должен вернуть один из трех других:
   *
@@ -26,7 +43,7 @@ function Game() {
   *  state.game.players, то нужно запустить таймер
   * */
   return (
-    <div className={style.games}>
+    <div className={style.games} onClick={() => alert('hello looser')}>
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.playerOne}>
         <h1>ИГРОК 1</h1>
