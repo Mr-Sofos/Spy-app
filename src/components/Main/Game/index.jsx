@@ -1,23 +1,23 @@
 import React from 'react';
 import style from './style.module.css';
 import PageTitle from '../../Pagetitle';
-import { useSelector } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWrapperSelected } from '../../../redux/ducks/game';
 import SpyMan from './GameComponents/SpyMan';
+import Peaceful from './GameComponents/Peaceful';
 
 function Game() {
-  // const wrapper = useSelector(state => state.game.wrapper);
-  //
-  // if(wrapper) {
-  //   return(
-  //     <Switch>
-  //       <Route path="/spy">
-  //         <SpyMan />
-  //       </Route>
-  //       <Redirect to="/game" />
-  //     </Switch>
-  //   )
-  // }
+  const dispatch = useDispatch();
+
+  const playerShowed = useSelector(state => state.game.playersShowed);
+
+  const spyOrder = useSelector(state => state.game.spyOrder);
+
+  const wrapper = useSelector(state => state.game.wrapper);
+
+  const distributionOfRoles = () => {
+    dispatch(setWrapperSelected())
+  }
 
 
   /*
@@ -42,11 +42,38 @@ function Game() {
   *  Если ходов не осталось (то есть state.game.playersShowed ===
   *  state.game.players, то нужно запустить таймер
   * */
+
+  if(wrapper) {
+    return(
+      <div onClick={() => {dispatch(setWrapperSelected())}}>
+        Игрок 1
+        нажми чтобы увидеть свою роль
+      </div>
+    )
+  }
+
+  if(spyOrder === playerShowed) {
+    return(
+      <div onClick={() => dispatch({type: 'eee'})}>
+        {<SpyMan />}
+      </div>
+    )
+  }
+
+  if (spyOrder !== playerShowed) {
+    return (
+      <div >
+        {<Peaceful />}
+        isStillPlayersLeft()
+      </div>
+    )
+  }
+
   return (
-    <div className={style.games} onClick={() => alert('hello looser')}>
+    <div className={style.games} onClick={() => distributionOfRoles()}>
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.playerOne}>
-        <h1>ИГРОК 1</h1>
+        <h2>{`${playerShowed}-й игрок:`}</h2>
         <p>
           Тапни один раз по экрану,
           <br /> чтобы узнать свою роль

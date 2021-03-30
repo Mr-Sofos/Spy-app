@@ -2,8 +2,28 @@ import React from 'react';
 import style from '../style.module.css';
 import PageTitle from '../../../Pagetitle';
 import image from '../../../../assets/peace.png';
+import { useSelector } from 'react-redux';
 
-function Peaceful(props) {
+function Peaceful() {
+  const arr = useSelector((state) => state.categories.items);
+  const idArr = useSelector((state) => state.game.selectedCategories);
+  // вывел на экран выбранную категорию с помощью reduce
+  const words = () => {
+    if (idArr.length === arr.length) {
+      return 'все';
+    }
+
+    return arr
+      .reduce((actuallyWords, item) => {
+        if (idArr.indexOf(item.id) !== -1) {
+          return [...actuallyWords, item.name];
+        }
+
+        return actuallyWords;
+      }, [])
+      .join(', ');
+  };
+
   return (
     <div className={style.peaceful}>
       <PageTitle>Раздача ролей</PageTitle>
@@ -11,9 +31,9 @@ function Peaceful(props) {
         <img src={image} alt="imgPeaceful" />
       </div>
       <div className={style.peacefulText}>
-        <h1>Слово</h1>
+        <h1>{words()}</h1>
         <p>
-          Ты местный!
+          Ты местный
           Все игроки, кроме Шпиона знают это слово. Задавай вопросы другим
           игрокам, чтобы вычислить кто из них Шпион.
         </p>
