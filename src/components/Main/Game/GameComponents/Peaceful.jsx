@@ -2,11 +2,16 @@ import React from 'react';
 import style from '../style.module.css';
 import PageTitle from '../../../Pagetitle';
 import image from '../../../../assets/peace.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWrapperSelected } from '../../../../redux/ducks/game';
 
 function Peaceful() {
+  const dispatch = useDispatch();
+
   const arr = useSelector((state) => state.categories.items);
+
   const idArr = useSelector((state) => state.game.selectedCategories);
+
   // вывел на экран выбранную категорию с помощью reduce
   const words = () => {
     if (idArr.length === arr.length) {
@@ -25,7 +30,12 @@ function Peaceful() {
   };
 
   return (
-    <div className={style.peaceful}>
+    <div
+      className={style.peaceful}
+      onClick={() => {
+        dispatch(() => dispatch({type: 'eee'}));
+      }}
+    >
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.peacefulImg}>
         <img src={image} alt="imgPeaceful" />
@@ -33,9 +43,8 @@ function Peaceful() {
       <div className={style.peacefulText}>
         <h1>{words()}</h1>
         <p>
-          Ты местный
-          Все игроки, кроме Шпиона знают это слово. Задавай вопросы другим
-          игрокам, чтобы вычислить кто из них Шпион.
+          Ты местный! Все игроки кроме Шпиона, знают это слово. Задавай вопросы
+          другим игрокам, чтобы вычислить кто из них Шпион.
         </p>
       </div>
     </div>

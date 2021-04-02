@@ -55,6 +55,8 @@ export default function reducer(state = initialState, action) {
         ...state,
         started: true,
         wrapper: true,
+        spyOrder: action.payload,
+        playersShowed: state.playersShowed + 1,
       };
     case 'game/wrapper/set':
       return {
@@ -103,9 +105,14 @@ export function selectCategories(category) {
 }
 
 export function setStartGame() {
-  return {
-    type: 'game/start/set',
-  };
+  return (dispatch, getState) => {
+    const state = getState().game;
+
+    dispatch({
+      type: 'game/start/set',
+      payload: Math.floor(Math.random() * (state.players)) + 1
+    })
+  }
 }
 
 export function setWrapperSelected() {
