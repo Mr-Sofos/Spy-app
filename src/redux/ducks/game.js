@@ -1,13 +1,14 @@
+import { generateSpiesCount } from '../../utils/spiesHelpers';
+
 const initialState = {
-  players: 3,
-  spies: 1,
-  timer: 3, //тут должны быть не минуты, а секунды. В компоненте нужно
-            // подправить вывод (timer / 60)
+  playersCount: 3,
+  spiesCount: 1,
+  timer: 3,
   selectedCategories: [2],
 
   started: false, // тру когда кликнут начать игру
   currentWord: null, // текущее слово (выбирается случайно из выбранных катов)
-  spyOrder: 1, // номер шпиона (случайное число от 1 до players)
+  spiesOrder: null, // номер шпиона (случайное число от 1 до players)
   playersShowed: 0, // сколько человек уже просмотрели свою роль
   wrapper: null, // показывать ли обложку или нет
 
@@ -20,12 +21,12 @@ export default function reducer(state = initialState, action) {
     case 'game/players/set':
       return {
         ...state,
-        players: action.payload,
+        playersCount: action.payload,
       };
     case 'game/spies/set':
       return {
         ...state,
-        spies: action.payload,
+        spiesCount: action.payload,
       };
     case 'game/time/set':
       return {
@@ -35,7 +36,7 @@ export default function reducer(state = initialState, action) {
     case 'game/categories/select':
       //проверка выбрана ли категория...
       const isAlreadySelected =
-        state.selectedCategories.indexOf(action.payload) !== -1;
+        !state.selectedCategories.indexOf(action.payload);
 
       if (isAlreadySelected) {
         return {
@@ -57,18 +58,19 @@ export default function reducer(state = initialState, action) {
         wrapper: true,
         spyOrder: action.payload,
         playersShowed: state.playersShowed + 1,
+        spiesOrder: action.payload.spiesOrder,
       };
     case 'game/wrapper/set':
       return {
         ...state,
         wrapper: false,
-        playersShowed: state.playersShowed + 1,
       }
 
     case 'eee':
       return {
         ...state,
-        wrapper: true
+        wrapper: true,
+        playersShowed: state.playersShowed + 1,
       }
 
     default:
@@ -106,11 +108,13 @@ export function selectCategories(category) {
 
 export function setStartGame() {
   return (dispatch, getState) => {
-    const state = getState().game;
+    const { playersCount, spiesCount } = getState().game;
 
     dispatch({
       type: 'game/start/set',
-      payload: Math.floor(Math.random() * (state.players)) + 1
+      payload: {
+        spiesOrder: generateSpiesCount(playersCount, spiesCount)
+      }
     })
   }
 }

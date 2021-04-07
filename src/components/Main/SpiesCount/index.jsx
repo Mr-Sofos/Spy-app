@@ -4,12 +4,18 @@ import DialogBody from '../../Dialog/DialogBody';
 import Dialog from '../../Dialog';
 import List from '../../List';
 import ListItem from '../../ListItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSpies } from '../../../redux/ducks/game';
+import { getSpiesCountArray } from '../../../utils/spiesHelpers';
 
 function SpiesCount(props) {
   const dispatch = useDispatch();
-  const spies = [1, 2, 3, 4, 5];
+  const playersCount = useSelector(state => state.game.playersCount);
+
+  //TODO Объяснить useMemo
+  const spiesCount = getSpiesCountArray(playersCount);
+
+
 
   const selectSpiesCount = (count) => {
     dispatch(setSpies(count))
@@ -21,7 +27,7 @@ function SpiesCount(props) {
       <DialogHeader>Количество шпионов</DialogHeader>
       <DialogBody>
         <List>
-          {spies.map(spy => {
+          {spiesCount.map(spy => {
             return (
               <ListItem onClick={() => selectSpiesCount(spy)}>
                 {spy}

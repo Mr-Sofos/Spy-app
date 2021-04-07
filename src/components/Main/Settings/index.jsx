@@ -23,8 +23,8 @@ function Settings() {
   const settings = useSelector((state) => {
     return {
       timer: state.game.timer,
-      players: state.game.players,
-      spies: state.game.spies,
+      players: state.game.playersCount,
+      spies: state.game.spiesCount,
       selectedCategories: state.game.selectedCategories,
     };
   });
@@ -82,12 +82,12 @@ function Settings() {
   };
 
   const countPlayers = pluralize(
-    settings.players,
+    settings.playersCount,
     'игрок',
     'игрока',
     'игроков',
   );
-  const countSpies = pluralize(settings.spies, 'шпион', 'шпиона', 'шпионов');
+  const countSpies = pluralize(settings.spiesCount, 'шпион', 'шпиона', 'шпионов');
   const timeCount = pluralize(settings.timer, 'минута', 'минуты', 'минут');
 
   const dispatch = useDispatch();
@@ -124,7 +124,7 @@ function Settings() {
         >
           Таймер
         </ListItem>
-        <Button onClick={() => startGame()}>НАЧАТЬ ИГРУ</Button>
+        <Button onClick={startGame}>НАЧАТЬ ИГРУ</Button>
       </List>
       <PlayersCount open={playerDialog} onClose={closeDialogTotalPlayers} />
       <SpiesCount open={spiesDialog} onClose={closeDialogTotalSpies} />

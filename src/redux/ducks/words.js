@@ -2,59 +2,73 @@ const initialState = {
   words: [
     {
       id: 1,
-      name: 'Лес'
+      name: 'Греция',
+      categoryId: 1
     },
     {
       id: 2,
-      name: 'Озеро'
+      name: 'Планетарий',
+      categoryId: 2
     },
     {
       id: 3,
-      name: 'Кит'
+      name: 'Скейтборд',
+      categoryId: 3
     },
     {
       id: 4,
-      name: 'Акула'
+      name: 'Пиццерия',
+      categoryId: 4
     },
     {
       id: 5,
-      name: 'Дом'
+      name: 'Река',
+      categoryId: 5
     },
     {
       id: 6,
-      name: 'Аэропорт'
+      name: 'Поле для гольфа',
+      categoryId: 6
     },
     {
       id: 7,
-      name: 'Бар'
+      name: 'Древний рим',
+      categoryId: 7
     },
     {
       id: 8,
-      name: 'Кинотеатр'
+      name: 'Шоколадная фабрика',
+      categoryId: 8
     },
     {
       id: 9,
-      name: 'Цирк'
+      name: 'Цирк',
+      categoryId: 9
     },
     {
       id: 10,
-      name: 'Концертный зал'
+      name: 'Концертный зал',
+      categoryId: 9
     },
     {
       id: 11,
-      name: 'Стройка'
+      name: 'Стройка',
+      categoryId: 9
     },
     {
       id: 12,
-      name: 'Галлерея'
+      name: 'Галлерея',
+      categoryId: 9
     },
     {
       id: 13,
-      name: 'Гараж'
+      name: 'Гараж',
+      categoryId: 9
     },
     {
       id: 14,
-      name: 'Больница'
+      name: 'Больница',
+      categoryId: 9
     }
   ]
 };

@@ -7,11 +7,11 @@ import Wrapper from './GameComponents/Wrapper';
 function Game() {
   const playerShowed = useSelector((state) => state.game.playersShowed);
 
-  const spyOrder = useSelector((state) => state.game.spyOrder);
+  const spiesOrder = useSelector((state) => state.game.spiesOrder);
 
   const wrapper = useSelector((state) => state.game.wrapper);
 
-  const players = useSelector(state => state.game.players);
+  const players = useSelector(state => state.game.playersCount);
 
   /*
    * Этот компонент должен вернуть один из трех других:
@@ -40,7 +40,7 @@ function Game() {
     return <Wrapper />;
   }
 
-  if (playerShowed > players +1) {
+  if (playerShowed === players) {
     return (
       <div>
         Timer
@@ -48,7 +48,7 @@ function Game() {
     )
   }
 
-  if (spyOrder === playerShowed) {
+  if (spiesOrder.indexOf(playerShowed) !== -1) {
     return <SpyMan />;
   }
 

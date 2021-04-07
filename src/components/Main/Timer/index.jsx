@@ -21,7 +21,7 @@ function Timer(props) {
         {timer.map(time => {
           return (
             <ListItem key={time} onClick={() => selectTimeCount(time)}>
-              {time}
+            Таймер:  {time} мин.
             </ListItem>
           )
         })}
