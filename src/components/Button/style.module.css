@@ -1,5 +1,5 @@
 button {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -19,7 +19,7 @@ button {
   color: #ffffff;
   cursor: pointer;
   transition: background 0.3s linear;
-  margin: auto;
+  margin: 10px auto;
 }
 button:hover {
   background: linear-gradient(270deg, #4461ad 0%, #6e9edd 100%);

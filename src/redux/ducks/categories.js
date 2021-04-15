@@ -2,33 +2,37 @@ const initialState = {
   items: [
     {
       id: 1,
-      name: 'Страны'
+      name: 'Страны',
     },
     {
       id: 2,
-      name: 'Исскуство и культура'
+      name: 'Исскуство и культура',
     },
     {
       id: 3,
-      name: 'Путешествие'
+      name: 'Путешествие',
     },
     {
       id: 4,
-      name: 'Дети'
+      name: 'Дети',
     },
     {
       id: 5,
-      name: 'Досуг'
+      name: 'Досуг',
     },
     {
       id: 6,
-      name: 'Машина времени'
+      name: 'Машина времени',
     },
     {
       id: 7,
-      name: 'Хардкорный микс'
+      name: 'Спорт',
     },
-  ]
+    {
+      id: 8,
+      name: 'Хардкорный микс',
+    },
+  ],
 };
 
 export default function reducer(state = initialState, action) {
@@ -36,4 +40,4 @@ export default function reducer(state = initialState, action) {
     default:
       return state;
   }
-};
+}

@@ -1,10 +1,10 @@
 .dialogBody {
-    font-family: 'Roboto', sans-serif;
-    overflow-y: scroll;
-    height: 15em;
-    margin: auto;
+  font-family: 'Roboto', sans-serif;
+  overflow-y: scroll;
+  height: 15em;
+  margin: auto;
 }
 
 .dialogBody::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }

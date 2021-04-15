@@ -13,7 +13,9 @@ function Words(props) {
 
   const categories = useSelector((state) => state.categories.items);
 
-  const selectedCategories = useSelector(state => state.game.selectedCategories)
+  const selectedCategories = useSelector(
+    (state) => state.game.selectedCategories,
+  );
 
   const selectCategoryWords = (id) => {
     dispatch(selectCategories(id));
@@ -24,7 +26,7 @@ function Words(props) {
       <DialogHeader>Категории слов</DialogHeader>
       <DialogBody>
         {categories.map((category) => {
-          const isSelected = selectedCategories.indexOf(category.id) !== -1
+          const isSelected = selectedCategories.indexOf(category.id) !== -1;
           return (
             <ListItem
               key={category.id}
@@ -32,19 +34,15 @@ function Words(props) {
             >
               <div className={style.categoriesWords}>
                 <div>
-                  <input type='checkbox' checked={isSelected} />
+                  <input type="checkbox" checked={isSelected} />
                 </div>
-                <div>
-                  {category.name}
-                </div>
+                <div>{category.name}</div>
               </div>
             </ListItem>
           );
         })}
       </DialogBody>
-      <Button onClick={() => props.onClose()}>
-        Готово
-      </Button>
+      <Button onClick={() => props.onClose()}>Готово</Button>
     </Dialog>
   );
 }

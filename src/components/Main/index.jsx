@@ -11,17 +11,17 @@ import { useSelector } from 'react-redux';
 import Peaceful from './Game/GameComponents/Peaceful';
 
 function Main() {
-  const started = useSelector(state => state.game.started);
+  const started = useSelector((state) => state.game.started);
 
-  if(started) {
-    return(
+  if (started) {
+    return (
       <Switch>
         <Route path="/game">
           <Game />
         </Route>
         <Redirect to="/game" />
       </Switch>
-    )
+    );
   }
 
   return (

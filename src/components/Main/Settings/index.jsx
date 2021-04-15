@@ -28,11 +28,11 @@ function Settings() {
       selectedCategories: state.game.selectedCategories,
     };
   });
-  //получил массив объектов
+
   const selectedCategories = useSelector((state) => state.categories.items);
-  // получил id выбранных слов в категории
+
   const idCategory = settings.selectedCategories;
-  // вывел на экран выбранную категорию с помощью Ахьмада
+
   const wordsCategory = () => {
     if (idCategory.length === selectedCategories.length) {
       return 'все';
@@ -87,14 +87,19 @@ function Settings() {
     'игрока',
     'игроков',
   );
-  const countSpies = pluralize(settings.spiesCount, 'шпион', 'шпиона', 'шпионов');
+  const countSpies = pluralize(
+    settings.spiesCount,
+    'шпион',
+    'шпиона',
+    'шпионов',
+  );
   const timeCount = pluralize(settings.timer, 'минута', 'минуты', 'минут');
 
   const dispatch = useDispatch();
 
   const startGame = () => {
-    dispatch(setStartGame())
-  }
+    dispatch(setStartGame());
+  };
 
   return (
     <div>

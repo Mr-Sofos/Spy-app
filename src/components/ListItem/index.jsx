@@ -7,10 +7,12 @@ function ListItem(props) {
     <li className={style.list} onClick={props.onClick}>
       <div>
         <div className={style.title}>{props.children}</div>
-        {props.subtitle && <div className={style.subtitle}>{props.subtitle}</div>}
+        {props.subtitle && (
+          <div className={style.subtitle}>{props.subtitle}</div>
+        )}
       </div>
       <div className={style.icon}>
-        <i className='fa fa-angle-right' aria-hidden='true'/>
+        <i className="fa fa-angle-right" aria-hidden="true" />
       </div>
     </li>
   );

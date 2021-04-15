@@ -10,29 +10,27 @@ import { getSpiesCountArray } from '../../../utils/spiesHelpers';
 
 function SpiesCount(props) {
   const dispatch = useDispatch();
-  const playersCount = useSelector(state => state.game.playersCount);
+  const playersCount = useSelector((state) => state.game.playersCount);
 
   //TODO Объяснить useMemo
   const spiesCount = getSpiesCountArray(playersCount);
 
-
-
   const selectSpiesCount = (count) => {
-    dispatch(setSpies(count))
+    dispatch(setSpies(count));
 
-    props.onClose()
-  }
+    props.onClose();
+  };
   return (
     <Dialog open={props.open} onClose={props.onClose}>
       <DialogHeader>Количество шпионов</DialogHeader>
       <DialogBody>
         <List>
-          {spiesCount.map(spy => {
+          {spiesCount.map((spy) => {
             return (
-              <ListItem onClick={() => selectSpiesCount(spy)}>
+              <ListItem key={spy} onClick={() => selectSpiesCount(spy)}>
                 {spy}
               </ListItem>
-            )
+            );
           })}
         </List>
       </DialogBody>
@@ -40,4 +38,4 @@ function SpiesCount(props) {
   );
 }
 
-export default SpiesCount
+export default SpiesCount;

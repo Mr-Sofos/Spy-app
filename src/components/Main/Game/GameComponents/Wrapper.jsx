@@ -17,8 +17,8 @@ function Wrapper() {
       }}
     >
       <PageTitle>Раздача ролей</PageTitle>
-      <div className={style.playerOne}>
-        <h2>{`${playerShowed}-й игрок:`}</h2>
+      <div className={style.playerWrap}>
+        <h1>{`${playerShowed}-й игрок`}</h1>
         <p>
           Тапни один раз по экрану,
           <br /> чтобы узнать свою роль

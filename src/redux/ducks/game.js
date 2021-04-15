@@ -1,4 +1,7 @@
-import { generateSpiesCount } from '../../utils/spiesHelpers';
+import {
+  generateSpiesCount,
+  getRandomWordByCategory,
+} from '../../utils/spiesHelpers';
 
 const initialState = {
   playersCount: 3,
@@ -11,9 +14,6 @@ const initialState = {
   spiesOrder: null, // номер шпиона (случайное число от 1 до players)
   playersShowed: 0, // сколько человек уже просмотрели свою роль
   wrapper: null, // показывать ли обложку или нет
-
-  timerStarted: false, // после того как последний игрок просмотрит свою роль
-                       // значение изменится на true
 };
 
 export default function reducer(state = initialState, action) {
@@ -36,7 +36,7 @@ export default function reducer(state = initialState, action) {
     case 'game/categories/select':
       //проверка выбрана ли категория...
       const isAlreadySelected =
-        !state.selectedCategories.indexOf(action.payload);
+        state.selectedCategories.indexOf(action.payload) !== -1;
 
       if (isAlreadySelected) {
         return {
@@ -56,26 +56,32 @@ export default function reducer(state = initialState, action) {
         ...state,
         started: true,
         wrapper: true,
-        spyOrder: action.payload,
         playersShowed: state.playersShowed + 1,
         spiesOrder: action.payload.spiesOrder,
+        currentWord: action.payload.currentWord,
       };
     case 'game/wrapper/set':
       return {
         ...state,
         wrapper: false,
-      }
+      };
 
     case 'eee':
       return {
         ...state,
-        wrapper: true,
+        wrapper: state.playersShowed !== state.playersCount,
         playersShowed: state.playersShowed + 1,
-      }
+      };
 
     default:
       return state;
   }
+}
+
+export function setHandle() {
+  return {
+    type: 'eee',
+  };
 }
 
 export function setPlayers(count) {
@@ -108,19 +114,20 @@ export function selectCategories(category) {
 
 export function setStartGame() {
   return (dispatch, getState) => {
-    const { playersCount, spiesCount } = getState().game;
-
+    const { playersCount, spiesCount, selectedCategories } = getState().game;
+    const { words } = getState().words;
     dispatch({
       type: 'game/start/set',
       payload: {
-        spiesOrder: generateSpiesCount(playersCount, spiesCount)
-      }
-    })
-  }
+        spiesOrder: generateSpiesCount(playersCount, spiesCount),
+        currentWord: getRandomWordByCategory(words, selectedCategories),
+      },
+    });
+  };
 }
 
 export function setWrapperSelected() {
   return {
     type: 'game/wrapper/set',
-  }
+  };
 }
