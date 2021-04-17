@@ -29,7 +29,6 @@ function PlayersCount({ onClose, open }) {
             <ListItem
               key={player.toString()}
               onClick={() => selectPlayersCount(player)}
-              subtitle="#"
             >
               {player}
             </ListItem>

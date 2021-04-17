@@ -6,7 +6,7 @@ function ListItem({ children, onClick, subtitle }) {
     <li className={style.list} onClick={onClick} aria-hidden="true">
       <div>
         <div className={style.title}>{children}</div>
-        {subtitle && <div className={style.subtitle}>{subtitle}</div>}
+        <div className={style.subtitle}>{subtitle}</div>
       </div>
       <div className={style.icon}>
         <i className="fa fa-angle-right" aria-hidden="true" />
@@ -17,8 +17,12 @@ function ListItem({ children, onClick, subtitle }) {
 
 ListItem.propTypes = {
   children: PropTypes.node.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
   onClick: PropTypes.func.isRequired,
+};
+
+ListItem.defaultProps = {
+  subtitle: PropTypes.string,
 };
 
 export default ListItem;

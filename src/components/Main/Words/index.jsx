@@ -31,7 +31,6 @@ function Words({ open, onClose }) {
             <ListItem
               key={category.id}
               onClick={() => selectCategoryWords(category.id)}
-              subtitle="#"
             >
               <div className={style.categoriesWords}>
                 <div>
@@ -43,14 +42,19 @@ function Words({ open, onClose }) {
           );
         })}
       </DialogBody>
-      <Button onClick={() => onClose()}>Готово</Button>
+      <Button onClick={onClose}>Готово</Button>
     </Dialog>
   );
 }
 
 Words.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+  open: PropTypes.func,
+};
+
+Words.defaultProps = {
+  onClose: PropTypes.func,
+  open: PropTypes.func,
 };
 
 export default Words;

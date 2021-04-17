@@ -22,11 +22,7 @@ function Timer({ onClose, open }) {
       <DialogHeader>Таймер</DialogHeader>
       <DialogBody>
         {timer.map((time) => (
-          <ListItem
-            key={time}
-            onClick={() => selectTimeCount(time)}
-            subtitle="#"
-          >
+          <ListItem key={time} onClick={() => selectTimeCount(time)}>
             Таймер: {time} мин.
           </ListItem>
         ))}
@@ -36,8 +32,13 @@ function Timer({ onClose, open }) {
 }
 
 Timer.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+  open: PropTypes.func,
+};
+
+Timer.defaultProps = {
+  onClose: PropTypes.func,
+  open: PropTypes.func,
 };
 
 export default Timer;

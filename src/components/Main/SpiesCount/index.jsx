@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setSpies } from '../../../redux/ducks/game';
@@ -12,25 +13,22 @@ function SpiesCount({ onClose, open }) {
   const dispatch = useDispatch();
   const playersCount = useSelector((state) => state.game.playersCount);
 
-  // TODO Объяснить useMemo
-  const spiesCount = getSpiesCountArray(playersCount);
+  // использую хук useMemo для оптимизации кода...
+  const spiesCount = useMemo(() => getSpiesCountArray(playersCount), []);
 
   const selectSpiesCount = (count) => {
     dispatch(setSpies(count));
 
     onClose();
   };
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogHeader>Количество шпионов</DialogHeader>
       <DialogBody>
         <List>
           {spiesCount.map((spy) => (
-            <ListItem
-              key={spy}
-              onClick={() => selectSpiesCount(spy)}
-              subtitle="#"
-            >
+            <ListItem key={spy} onClick={() => selectSpiesCount(spy)}>
               {spy}
             </ListItem>
           ))}
