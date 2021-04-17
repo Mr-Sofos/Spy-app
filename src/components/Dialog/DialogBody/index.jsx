@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.css';
 
-function DialogBody(props) {
-  return <div className={style.dialogBody}>{props.children}</div>;
+function DialogBody({ children }) {
+  return <div className={style.dialogBody}>{children}</div>;
 }
 
 DialogBody.propTypes = {

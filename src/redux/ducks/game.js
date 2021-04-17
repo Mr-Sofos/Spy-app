@@ -1,6 +1,6 @@
 import {
   generateSpiesCount,
-  getRandomWordByCategory,
+  getRandomWordByCategories,
 } from '../../utils/spiesHelpers';
 
 const initialState = {
@@ -18,23 +18,26 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'game/players/set':
+    case 'game/set-players': {
       return {
         ...state,
         playersCount: action.payload,
       };
-    case 'game/spies/set':
+    }
+    case 'game/set-spies': {
       return {
         ...state,
         spiesCount: action.payload,
       };
-    case 'game/time/set':
+    }
+    case 'game/set-time': {
       return {
         ...state,
         timer: action.payload,
       };
-    case 'game/categories/select':
-      //проверка выбрана ли категория...
+    }
+    case 'game/categories/select': {
+      // проверка выбрана ли категория...
       const isAlreadySelected =
         state.selectedCategories.indexOf(action.payload) !== -1;
 
@@ -45,13 +48,13 @@ export default function reducer(state = initialState, action) {
             (item) => item !== action.payload,
           ),
         };
-      } else {
-        return {
-          ...state,
-          selectedCategories: [...state.selectedCategories, action.payload],
-        };
       }
-    case 'game/start/set':
+      return {
+        ...state,
+        selectedCategories: [...state.selectedCategories, action.payload],
+      };
+    }
+    case 'game/set-start': {
       return {
         ...state,
         started: true,
@@ -60,47 +63,51 @@ export default function reducer(state = initialState, action) {
         spiesOrder: action.payload.spiesOrder,
         currentWord: action.payload.currentWord,
       };
-    case 'game/wrapper/set':
+    }
+    case 'game/wrapper': {
       return {
         ...state,
         wrapper: false,
       };
+    }
 
-    case 'eee':
+    case 'view/roles': {
       return {
         ...state,
         wrapper: state.playersShowed !== state.playersCount,
         playersShowed: state.playersShowed + 1,
       };
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 }
 
-export function setHandle() {
+export function handleViewRoles() {
   return {
-    type: 'eee',
+    type: 'view/roles',
   };
 }
 
 export function setPlayers(count) {
   return {
-    type: 'game/players/set',
+    type: 'game/set-players',
     payload: count,
   };
 }
 
 export function setSpies(count) {
   return {
-    type: 'game/spies/set',
+    type: 'game/set-spies',
     payload: count,
   };
 }
 
 export function setTime(timeCount) {
   return {
-    type: 'game/time/set',
+    type: 'game/set-time',
     payload: timeCount,
   };
 }
@@ -112,22 +119,41 @@ export function selectCategories(category) {
   };
 }
 
-export function setStartGame() {
+export function setWrapperSelected() {
+  return {
+    type: 'game/wrapper',
+  };
+}
+
+export function startGame() {
   return (dispatch, getState) => {
     const { playersCount, spiesCount, selectedCategories } = getState().game;
     const { words } = getState().words;
     dispatch({
-      type: 'game/start/set',
+      type: 'game/set-start',
       payload: {
         spiesOrder: generateSpiesCount(playersCount, spiesCount),
-        currentWord: getRandomWordByCategory(words, selectedCategories),
+        currentWord: getRandomWordByCategories(words, selectedCategories),
       },
     });
   };
 }
 
-export function setWrapperSelected() {
-  return {
-    type: 'game/wrapper/set',
-  };
-}
+// селектор
+export const selectedCategoriesSelector = (state) => {
+  const { selectedCategories } = state.game;
+
+  if (selectedCategories.length === state.categories.length) {
+    return 'все';
+  }
+
+  return state.categories.items
+    .reduce((showSelectedCategories, category) => {
+      if (selectedCategories.indexOf(category.id) !== -1) {
+        return [...showSelectedCategories, category.name];
+      }
+
+      return showSelectedCategories;
+    }, [])
+    .join(', ');
+};

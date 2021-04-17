@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import helpImg from '../../../assets/help.svg';
-import style from './style.module.css';
 import DialogHeader from '../../Dialog/DialogHeader';
 import DialogTitle from '../../Dialog/DialogTitle';
 import DialogBody from '../../Dialog/DialogBody';
 import Dialog from '../../Dialog';
+import style from './style.module.css';
 
 function Help() {
   const [dialog, setDialog] = useState(false);
@@ -19,7 +19,7 @@ function Help() {
 
   return (
     <>
-      <div className={style.help} onClick={handleClickOpen}>
+      <div className={style.help} onClick={handleClickOpen} aria-hidden="true">
         <img src={helpImg} alt="#" />
       </div>
 
@@ -50,10 +50,10 @@ function Help() {
           </p>
           <h3>Как играть?</h3>
           <p>
-            Скажи: "Я знаю, кто Шпион". И тогда на счет три все игроки должны
-            указать на того человека, кто по их мнению, Шпион. Если все выбрали
-            одного и тогоже игрока, то он должен раскрыть свою роль. Если он
-            оказывается местным - Шпион выигрывает. Если же этот человек
+            Скажи: &quot;Я знаю, кто Шпион&quot;. И тогда на счет три все игроки
+            должны указать на того человека, кто по их мнению, Шпион. Если все
+            выбрали одного и тогоже игрока, то он должен раскрыть свою роль.
+            Если он оказывается местным - Шпион выигрывает. Если же этот человек
             действительно Шпион - выигрывают местные. Если игроки указали на
             разных людей, то игра продолжается.
           </p>

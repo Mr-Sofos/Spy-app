@@ -1,41 +1,48 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setSpies } from '../../../redux/ducks/game';
+import { getSpiesCountArray } from '../../../utils/spiesHelpers';
 import DialogHeader from '../../Dialog/DialogHeader';
 import DialogBody from '../../Dialog/DialogBody';
 import Dialog from '../../Dialog';
 import List from '../../List';
 import ListItem from '../../ListItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSpies } from '../../../redux/ducks/game';
-import { getSpiesCountArray } from '../../../utils/spiesHelpers';
 
-function SpiesCount(props) {
+function SpiesCount({ onClose, open }) {
   const dispatch = useDispatch();
   const playersCount = useSelector((state) => state.game.playersCount);
 
-  //TODO Объяснить useMemo
+  // TODO Объяснить useMemo
   const spiesCount = getSpiesCountArray(playersCount);
 
   const selectSpiesCount = (count) => {
     dispatch(setSpies(count));
 
-    props.onClose();
+    onClose();
   };
   return (
-    <Dialog open={props.open} onClose={props.onClose}>
+    <Dialog open={open} onClose={onClose}>
       <DialogHeader>Количество шпионов</DialogHeader>
       <DialogBody>
         <List>
-          {spiesCount.map((spy) => {
-            return (
-              <ListItem key={spy} onClick={() => selectSpiesCount(spy)}>
-                {spy}
-              </ListItem>
-            );
-          })}
+          {spiesCount.map((spy) => (
+            <ListItem
+              key={spy}
+              onClick={() => selectSpiesCount(spy)}
+              subtitle="#"
+            >
+              {spy}
+            </ListItem>
+          ))}
         </List>
       </DialogBody>
     </Dialog>
   );
 }
+
+SpiesCount.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.func.isRequired,
+};
 
 export default SpiesCount;

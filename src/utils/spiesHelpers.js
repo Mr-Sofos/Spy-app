@@ -1,4 +1,6 @@
-export function getSpiesCountArray(playersCount) {
+import { pluralize } from 'numeralize-ru';
+
+export const getSpiesCountArray = (playersCount) => {
   if (playersCount <= 4) {
     return [1];
   }
@@ -7,13 +9,11 @@ export function getSpiesCountArray(playersCount) {
 
   const array = new Array(spiesCount).fill(null);
 
-  return array.map((_, i) => {
-    return ++i;
-  });
-}
+  return array.map((_, i) => i + 1);
+};
 
-export function generateSpiesCount(playersCount, spiesCount) {
-  let result = [];
+export const generateSpiesCount = (playersCount, spiesCount) => {
+  const result = [];
 
   do {
     // 1 сгенерировать случ число от ПК до СК
@@ -26,14 +26,22 @@ export function generateSpiesCount(playersCount, spiesCount) {
   } while (result.length < spiesCount);
 
   return result;
-}
-
-const getWordsByCategory = (words, ids) => {
-  return words.filter((item) => ids.indexOf(item.categoryId) !== -1);
 };
 
-export const getRandomWordByCategory = (words, ids) => {
+const getWordsByCategory = (words, ids) =>
+  words.filter((item) => ids.indexOf(item.categoryId) !== -1);
+
+export const getRandomWordByCategories = (words, ids) => {
   const wordsList = getWordsByCategory(words, ids);
 
   return wordsList[Math.floor(Math.random() * wordsList.length)].name;
 };
+
+export const countPlayers = (count) =>
+  pluralize(count, 'игрок', 'игрока', 'игроков');
+
+export const countSpies = (count) =>
+  pluralize(count, 'шпион', 'шпиона', 'шпионов');
+
+export const timeCount = (count) =>
+  pluralize(count, 'минута', 'минуты', 'минут');

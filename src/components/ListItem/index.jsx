@@ -1,15 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import style from '../ListItem/style.module.css';
+import style from './style.module.css';
 
-function ListItem(props) {
+function ListItem({ children, onClick, subtitle }) {
   return (
-    <li className={style.list} onClick={props.onClick}>
+    <li className={style.list} onClick={onClick} aria-hidden="true">
       <div>
-        <div className={style.title}>{props.children}</div>
-        {props.subtitle && (
-          <div className={style.subtitle}>{props.subtitle}</div>
-        )}
+        <div className={style.title}>{children}</div>
+        {subtitle && <div className={style.subtitle}>{subtitle}</div>}
       </div>
       <div className={style.icon}>
         <i className="fa fa-angle-right" aria-hidden="true" />
@@ -20,8 +17,8 @@ function ListItem(props) {
 
 ListItem.propTypes = {
   children: PropTypes.node.isRequired,
-  subtitle: PropTypes.string,
-  onClick: PropTypes.func,
+  subtitle: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ListItem;

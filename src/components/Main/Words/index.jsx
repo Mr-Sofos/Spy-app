@@ -1,14 +1,14 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { selectCategories } from '../../../redux/ducks/game';
 import Dialog from '../../Dialog';
 import DialogHeader from '../../Dialog/DialogHeader';
 import DialogBody from '../../Dialog/DialogBody';
-import { useDispatch, useSelector } from 'react-redux';
 import ListItem from '../../ListItem';
-import style from './../Words/style.module.css';
-import { selectCategories } from '../../../redux/ducks/game';
+import style from './style.module.css';
 import Button from '../../Button';
 
-function Words(props) {
+function Words({ open, onClose }) {
   const dispatch = useDispatch();
 
   const categories = useSelector((state) => state.categories.items);
@@ -22,7 +22,7 @@ function Words(props) {
   };
 
   return (
-    <Dialog open={props.open} onClose={props.onClose}>
+    <Dialog open={open} onClose={onClose}>
       <DialogHeader>Категории слов</DialogHeader>
       <DialogBody>
         {categories.map((category) => {
@@ -31,6 +31,7 @@ function Words(props) {
             <ListItem
               key={category.id}
               onClick={() => selectCategoryWords(category.id)}
+              subtitle="#"
             >
               <div className={style.categoriesWords}>
                 <div>
@@ -42,9 +43,14 @@ function Words(props) {
           );
         })}
       </DialogBody>
-      <Button onClick={() => props.onClose()}>Готово</Button>
+      <Button onClick={() => onClose()}>Готово</Button>
     </Dialog>
   );
 }
+
+Words.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.func.isRequired,
+};
 
 export default Words;

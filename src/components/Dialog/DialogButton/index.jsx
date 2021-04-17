@@ -6,7 +6,7 @@ import style from '../DialogButton/style.module.css';
 function DialogButton(props) {
   return (
     <div className={style.button} onClick={props.onClick}>
-      <i className="fa fa-times" aria-hidden="true"></i>
+      <i className="fa fa-times" aria-hidden="true" />
     </div>
   );
 }

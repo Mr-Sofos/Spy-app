@@ -1,14 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import DialogContext from '../../context';
 import style from './style.module.css';
 
-function Dialog(props) {
+function Dialog({ children, onClose, open }) {
   return (
-    <div className={`${style.dialog} ${props.open ? style.active : ''}`}>
+    <div className={`${style.dialog} ${open ? style.active : ''}`}>
       <div className={style['dialog-content']}>
-        <DialogContext.Provider value={props.onClose}>
-          {props.children}
+        <DialogContext.Provider value={onClose}>
+          {children}
         </DialogContext.Provider>
       </div>
     </div>
@@ -16,9 +15,9 @@ function Dialog(props) {
 }
 
 Dialog.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  onClose: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Dialog;

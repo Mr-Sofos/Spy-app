@@ -1,8 +1,7 @@
-import React from 'react';
-import { setWrapperSelected } from '../../../../redux/ducks/game';
-import style from '../style.module.css';
-import PageTitle from '../../../Pagetitle';
 import { useDispatch, useSelector } from 'react-redux';
+import { setWrapperSelected } from '../../../../redux/ducks/game';
+import PageTitle from '../../../Pagetitle';
+import style from '../style.module.css';
 
 function Wrapper() {
   const dispatch = useDispatch();
@@ -15,6 +14,7 @@ function Wrapper() {
       onClick={() => {
         dispatch(setWrapperSelected());
       }}
+      aria-hidden="true"
     >
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.playerWrap}>

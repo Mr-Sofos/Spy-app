@@ -1,4 +1,4 @@
-button {
+.button {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -21,7 +21,7 @@ button {
   transition: background 0.3s linear;
   margin: 10px auto;
 }
-button:hover {
+.button:hover {
   background: linear-gradient(270deg, #4461ad 0%, #6e9edd 100%);
   transition: 0.3s linear;
 }

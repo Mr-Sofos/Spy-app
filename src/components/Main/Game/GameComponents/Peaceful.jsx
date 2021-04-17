@@ -1,20 +1,20 @@
-import React from 'react';
-import style from '../style.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleViewRoles } from '../../../../redux/ducks/game';
 import PageTitle from '../../../Pagetitle';
 import image from '../../../../assets/peace.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { setHandle } from '../../../../redux/ducks/game';
+import style from '../style.module.css';
 
 function Peaceful() {
   const dispatch = useDispatch();
 
   const word = useSelector((state) => state.game.currentWord);
 
-  const handle = () => {
-    dispatch(setHandle());
+  const handleRoles = () => {
+    dispatch(handleViewRoles());
   };
+
   return (
-    <div className={style.peaceful} onClick={handle}>
+    <div className={style.peaceful} onClick={handleRoles} aria-hidden="true">
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.peacefulImg}>
         <img src={image} alt="imgPeaceful" />

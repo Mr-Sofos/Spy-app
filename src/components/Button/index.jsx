@@ -1,9 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.css';
 
-function Button(props) {
-  return <button onClick={props.onClick}>{props.children}</button>;
+function Button({ children, onClick }) {
+  return (
+    <button className={style.button} type="button" onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 Button.propTypes = {

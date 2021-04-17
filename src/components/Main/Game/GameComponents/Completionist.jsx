@@ -1,6 +1,5 @@
-import React from 'react';
-import style from '../style.module.css';
 import { useSelector } from 'react-redux';
+import style from '../style.module.css';
 
 function Completionist() {
   const spiesOrder = useSelector((state) => state.game.spiesOrder);

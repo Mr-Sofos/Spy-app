@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import SpyMan from './GameComponents/SpyMan';
 import Peaceful from './GameComponents/Peaceful';

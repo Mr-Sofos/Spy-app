@@ -1,14 +1,18 @@
-import React from 'react';
-import style from '../style.module.css';
+import { useDispatch } from 'react-redux';
+import { handleViewRoles } from '../../../../redux/ducks/game';
 import image from '../../../../assets/spy.png';
 import PageTitle from '../../../Pagetitle';
-import { useDispatch } from 'react-redux';
+import style from '../style.module.css';
 
 function SpyMan() {
   const dispatch = useDispatch();
 
+  const handleRoles = () => {
+    dispatch(handleViewRoles());
+  };
+
   return (
-    <div className={style.spyMan} onClick={() => dispatch({ type: 'eee' })}>
+    <div className={style.spyMan} onClick={handleRoles} aria-hidden="true">
       <PageTitle>Раздача ролей</PageTitle>
       <div className={style.spyImg}>
         <img src={image} alt="imgSpy" />

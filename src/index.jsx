@@ -1,19 +1,16 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import store from './redux';
+import App from './components/App';
+import 'font-awesome/css/font-awesome.min.css';
+import './index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );

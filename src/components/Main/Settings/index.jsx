@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import {
+  selectedCategoriesSelector,
+  startGame,
+} from '../../../redux/ducks/game';
+import {
+  countPlayers,
+  countSpies,
+  timeCount,
+} from '../../../utils/spiesHelpers';
 import List from '../../List';
 import ListItem from '../../ListItem';
 import Button from '../../Button';
@@ -7,47 +17,28 @@ import PageTitle from '../../Pagetitle';
 import SpiesCount from '../SpiesCount';
 import Timer from '../Timer';
 import Words from '../Words';
-import { useDispatch, useSelector } from 'react-redux';
-import { pluralize } from 'numeralize-ru';
-import { setStartGame } from '../../../redux/ducks/game';
 
 function Settings() {
+  // диалоговое окно выбора количества игроков
   const [playerDialog, setPlayerDialog] = useState(false);
 
+  // диалоговое окно выбора количества шпионов
   const [spiesDialog, setSpiesDialog] = useState(false);
 
+  // диалоговое окно выбора категории слов
   const [categoriesWordsDialog, setCategoriesWordsDialog] = useState(false);
 
+  // диалоговое окно выбора таймера
   const [timerDialog, setTimerDialog] = useState(false);
 
-  const settings = useSelector((state) => {
-    return {
-      timer: state.game.timer,
-      players: state.game.playersCount,
-      spies: state.game.spiesCount,
-      selectedCategories: state.game.selectedCategories,
-    };
-  });
+  // для сокращения и читабельности кода, произведена деструктуризация
+  const settings = useSelector((state) => ({
+    timer: state.game.timer,
+    players: state.game.playersCount,
+    spies: state.game.spiesCount,
+  }));
 
-  const selectedCategories = useSelector((state) => state.categories.items);
-
-  const idCategory = settings.selectedCategories;
-
-  const wordsCategory = () => {
-    if (idCategory.length === selectedCategories.length) {
-      return 'все';
-    }
-
-    return selectedCategories
-      .reduce((actuallyWords, item) => {
-        if (idCategory.indexOf(item.id) !== -1) {
-          return [...actuallyWords, item.name];
-        }
-
-        return actuallyWords;
-      }, [])
-      .join(', ');
-  };
+  const categories = useSelector(selectedCategoriesSelector);
 
   const openDialogTotalPlayers = () => {
     setPlayerDialog(true);
@@ -81,24 +72,10 @@ function Settings() {
     setTimerDialog(false);
   };
 
-  const countPlayers = pluralize(
-    settings.playersCount,
-    'игрок',
-    'игрока',
-    'игроков',
-  );
-  const countSpies = pluralize(
-    settings.spiesCount,
-    'шпион',
-    'шпиона',
-    'шпионов',
-  );
-  const timeCount = pluralize(settings.timer, 'минута', 'минуты', 'минут');
-
   const dispatch = useDispatch();
 
-  const startGame = () => {
-    dispatch(setStartGame());
+  const handleStartGame = () => {
+    dispatch(startGame());
   };
 
   return (
@@ -106,30 +83,32 @@ function Settings() {
       <PageTitle>Настройки партии</PageTitle>
       <List>
         <ListItem
-          subtitle={`Выбрано: ${settings.players} ${countPlayers}`}
+          subtitle={`Выбрано: ${settings.players} ${countPlayers(
+            settings.players,
+          )}`}
           onClick={openDialogTotalPlayers}
         >
           Количество игроков
         </ListItem>
         <ListItem
-          subtitle={`Выбрано: ${settings.spies} ${countSpies}`}
+          subtitle={`Выбрано: ${settings.spies} ${countSpies(settings.spies)}`}
           onClick={openDialogTotalSpies}
         >
           Количество шпионов
         </ListItem>
         <ListItem
-          subtitle={`Выбрано: ${wordsCategory()}`}
+          subtitle={`Выбрано: ${categories}`}
           onClick={openCategoriesWordsDialog}
         >
           Категории слов
         </ListItem>
         <ListItem
-          subtitle={`Выбрано: ${settings.timer} ${timeCount}`}
+          subtitle={`Выбрано: ${settings.timer} ${timeCount(settings.timer)}`}
           onClick={openTimerDialog}
         >
           Таймер
         </ListItem>
-        <Button onClick={startGame}>НАЧАТЬ ИГРУ</Button>
+        <Button onClick={handleStartGame}>НАЧАТЬ ИГРУ</Button>
       </List>
       <PlayersCount open={playerDialog} onClose={closeDialogTotalPlayers} />
       <SpiesCount open={spiesDialog} onClose={closeDialogTotalSpies} />

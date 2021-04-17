@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import style from './/style.module.css';
+import style from './style.module.css';
 
-function List(props) {
-  return <ul className={style.list}>{props.children}</ul>;
+function List({ children }) {
+  return <ul className={style.list}>{children}</ul>;
 }
 
 List.propTypes = {
