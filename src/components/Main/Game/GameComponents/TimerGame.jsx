@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Countdown from 'react-countdown';
+import Countdown, { zeroPad } from 'react-countdown';
 import Completionist from './Completionist';
 import style from '../style.module.css';
 
@@ -13,7 +13,7 @@ function TimerGame() {
     return (
       <div className={style.timerWrap}>
         <div className={style.timer}>
-          {minutes}:{seconds}
+          {minutes}:{zeroPad(seconds)}
         </div>
         <div className={style.timerText}>
           Начинайте задавать впоросы! Успейте вычислить Шпиона прежде, чем

@@ -32,14 +32,8 @@ function Timer({ onClose, open }) {
 }
 
 Timer.propTypes = {
-  onClose: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.bool,
-  ]),
-  open: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.bool,
-  ]),
+  onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  open: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 
 Timer.defaultProps = {

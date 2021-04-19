@@ -30,7 +30,7 @@ ListItem.defaultProps = {
     PropTypes.string,
     PropTypes.func,
     PropTypes.bool,
-  ])
+  ]),
 };
 
 export default ListItem;

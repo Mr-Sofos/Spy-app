@@ -64,6 +64,15 @@ export default function reducer(state = initialState, action) {
         currentWord: action.payload.currentWord,
       };
     }
+
+    case 'game/start/again': {
+      return {
+        ...state,
+        started: false,
+        playersShowed: 0,
+      };
+    }
+
     case 'game/wrapper': {
       return {
         ...state,
@@ -122,6 +131,12 @@ export function selectCategories(category) {
 export function setWrapperSelected() {
   return {
     type: 'game/wrapper',
+  };
+}
+
+export function startGameAgain() {
+  return {
+    type: 'game/start/again',
   };
 }
 
