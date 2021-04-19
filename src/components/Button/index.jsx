@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import style from './style.module.css';
 
-function Button({ children, onClick }) {
+function Button({ children, onClick, size }) {
   return (
-    <button className={style.button} type="button" onClick={onClick}>
+    <button className={size} type="button" onClick={onClick}>
       {children}
     </button>
   );
@@ -12,6 +11,7 @@ function Button({ children, onClick }) {
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  size: PropTypes.oneOf(['small', 'medium', 'large']).isRequired,
 };
 
 export default Button;

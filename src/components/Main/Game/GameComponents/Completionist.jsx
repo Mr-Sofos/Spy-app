@@ -16,7 +16,9 @@ function Completionist() {
         <div className={style.spies}>Шпионы:</div>
         <div className={style.playersSpies}>{spiesOrder.join(', ')}</div>
       </div>
-      <Button onClick={handleStartAgain}>НАЧАТЬ ЗАНОВО</Button>
+      <Button size="small" onClick={handleStartAgain}>
+        НАЧАТЬ ЗАНОВО
+      </Button>
     </div>
   );
 }

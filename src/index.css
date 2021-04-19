@@ -24,3 +24,43 @@ body {
   z-index: 1;
   box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
 }
+
+button {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(270deg, #1a73e9 0%, #6c92f4 100%);
+  box-shadow: 0 2px 4px rgba(38, 50, 56, 0.08);
+  border-radius: 6px;
+  outline: 0;
+  width: 232px;
+  height: 40px;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s linear;
+  margin: 10px auto;
+}
+button:hover {
+  background: linear-gradient(270deg, #4461ad 0%, #6e9edd 100%);
+  transition: 0.3s linear;
+}
+
+.small {
+  margin-top: 40px;
+}
+
+.medium {
+  margin-top: 10px;
+}
+
+.large {
+  margin-top: 40px;
+}
