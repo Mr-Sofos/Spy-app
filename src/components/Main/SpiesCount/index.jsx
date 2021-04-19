@@ -14,7 +14,9 @@ function SpiesCount({ onClose, open }) {
   const playersCount = useSelector((state) => state.game.playersCount);
 
   // использую хук useMemo для оптимизации кода...
-  const spiesCount = useMemo(() => getSpiesCountArray(playersCount), []);
+  const spiesCount = useMemo(() => getSpiesCountArray(playersCount), [
+    playersCount,
+  ]);
 
   const selectSpiesCount = (count) => {
     dispatch(setSpies(count));
@@ -39,8 +41,13 @@ function SpiesCount({ onClose, open }) {
 }
 
 SpiesCount.propTypes = {
+  onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  open: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+};
+
+SpiesCount.propTypes = {
   onClose: PropTypes.func.isRequired,
-  open: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 export default SpiesCount;

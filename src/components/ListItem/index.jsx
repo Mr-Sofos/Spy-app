@@ -17,12 +17,20 @@ function ListItem({ children, onClick, subtitle }) {
 
 ListItem.propTypes = {
   children: PropTypes.node.isRequired,
-  subtitle: PropTypes.string,
+  subtitle: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.bool,
+  ]),
   onClick: PropTypes.func.isRequired,
 };
 
 ListItem.defaultProps = {
-  subtitle: PropTypes.string,
+  subtitle: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.bool,
+  ])
 };
 
 export default ListItem;

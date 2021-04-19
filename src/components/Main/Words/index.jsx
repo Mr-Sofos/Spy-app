@@ -34,7 +34,11 @@ function Words({ open, onClose }) {
             >
               <div className={style.categoriesWords}>
                 <div>
-                  <input type="checkbox" checked={isSelected} />
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => {}}
+                  />
                 </div>
                 <div>{category.name}</div>
               </div>
@@ -48,13 +52,13 @@ function Words({ open, onClose }) {
 }
 
 Words.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.func,
+  onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  open: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 
 Words.defaultProps = {
-  onClose: PropTypes.func,
-  open: PropTypes.func,
+  onClose: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  open: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 
 export default Words;

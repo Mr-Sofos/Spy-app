@@ -1,11 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import style from './style.module.css';
 
-import style from '../DialogButton/style.module.css';
-
-function DialogButton(props) {
+function DialogButton({ onClick }) {
   return (
-    <div className={style.button} onClick={props.onClick}>
+    <div className={style.button} onClick={onClick} aria-hidden="true">
       <i className="fa fa-times" aria-hidden="true" />
     </div>
   );

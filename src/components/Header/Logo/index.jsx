@@ -1,4 +1,3 @@
-import React from 'react';
 import Spy from '../../../assets/spy.png';
 import style from './style.module.css';
 

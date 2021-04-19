@@ -41,7 +41,7 @@ function PlayersCount({ onClose, open }) {
 
 PlayersCount.propTypes = {
   onClose: PropTypes.func.isRequired,
-  open: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 export default PlayersCount;

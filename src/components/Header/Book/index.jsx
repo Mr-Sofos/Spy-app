@@ -1,4 +1,3 @@
-import React from 'react';
 import bookImg from '../../../assets/book.svg';
 import style from './style.module.css';
 
