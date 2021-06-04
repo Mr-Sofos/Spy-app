@@ -108,7 +108,9 @@ function Settings() {
         >
           Таймер
         </ListItem>
-        <Button size='medium' onClick={handleStartGame}>НАЧАТЬ ИГРУ</Button>
+        <Button size="medium" onClick={handleStartGame}>
+          НАЧАТЬ ИГРУ
+        </Button>
       </List>
       <PlayersCount open={playerDialog} onClose={closeDialogTotalPlayers} />
       <SpiesCount open={spiesDialog} onClose={closeDialogTotalSpies} />

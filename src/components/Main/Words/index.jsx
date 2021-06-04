@@ -46,7 +46,9 @@ function Words({ open, onClose }) {
           );
         })}
       </DialogBody>
-      <Button size='medium' onClick={onClose}>Готово</Button>
+      <Button size="medium" onClick={onClose}>
+        Готово
+      </Button>
     </Dialog>
   );
 }
