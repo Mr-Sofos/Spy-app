@@ -4,7 +4,6 @@ import Categories from './Сategories';
 import SpyMan from './Game/GameComponents/SpyMan';
 import Game from './Game';
 import Settings from './Settings';
-import Timer from './Timer';
 import Words from './Words';
 import Peaceful from './Game/GameComponents/Peaceful';
 
@@ -31,9 +30,6 @@ function Main() {
         </Route>
         <Route path="/spy">
           <SpyMan />
-        </Route>
-        <Route path="/timer">
-          <Timer />
         </Route>
         <Route path="/categories">
           <Categories />

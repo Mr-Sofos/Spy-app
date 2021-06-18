@@ -13,7 +13,7 @@ function TimerGame() {
     return (
       <div className={style.timerWrap}>
         <div className={style.timer}>
-          {minutes}:{zeroPad(seconds)}
+          {zeroPad(minutes)}:{zeroPad(seconds)}
         </div>
         <div className={style.timerText}>
           Начинайте задавать впоросы! Успейте вычислить Шпиона прежде, чем

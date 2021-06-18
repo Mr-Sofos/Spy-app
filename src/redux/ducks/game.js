@@ -158,8 +158,8 @@ export function startGame() {
 export const selectedCategoriesSelector = (state) => {
   const { selectedCategories } = state.game;
 
-  if (selectedCategories.length === state.categories.length) {
-    return 'все';
+  if (selectedCategories.length === state.categories.items.length) {
+    return 'Всe категории';
   }
 
   return state.categories.items
